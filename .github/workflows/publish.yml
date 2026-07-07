@@ -28,7 +28,11 @@ jobs:
       id: changelog
       run: |
         VERSION=${GITHUB_REF#refs/tags/v}
-        sed -n "/^## \[$VERSION\]/,/^## \[/p" CHANGELOG.md | sed '1d;$d' > release_notes.txt
+        awk -v version="$VERSION" '
+          $0 ~ "^## \\[" version "\\]" { flag=1; next }
+          flag && /^## \[/ { flag=0 }
+          flag { print }
+        ' CHANGELOG.md > release_notes.txt
         if [ ! -s release_notes.txt ]; then
           echo "Release $VERSION" > release_notes.txt
         fi
@@ -38,7 +42,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         body_path: release_notes.txt
-        generate_release_notes: false
+        generate_release_notes: true
 
     - name: Publish to PyPI
       run: uv publish --token ${{ secrets.PYPI_API_TOKEN }}
