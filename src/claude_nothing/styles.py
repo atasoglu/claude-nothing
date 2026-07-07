@@ -1,0 +1,10 @@
+"""Color and style constants, matched to the real Claude Code palette."""
+
+CLAUDE = "#d97757"
+BORDER = "#5f5f5f"
+DIM = "#8a8a8a"
+GREEN = "#5faf5f"
+RED = "#d75f5f"
+BLUE = "#5f87d7"
+DIFF_ADD_BG = "#1e3320"
+DIFF_DEL_BG = "#3a1f22"
