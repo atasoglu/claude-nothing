@@ -14,15 +14,23 @@ Perfect for:
 
 ## Usage
 
+Run it instantly, no install required:
+
 ```sh
-uv run claude-nothing
+uvx claude-nothing
 ```
 
 Or install it as a tool:
 
 ```sh
-uv tool install .
+uv tool install claude-nothing
 claude-nothing
+```
+
+Working from a local checkout of this repo instead:
+
+```sh
+uv run claude-nothing
 ```
 
 Type anything and press enter. Real slash commands work too: `/help`, `/status`, `/cost`, `/clear`, `/compact`... none of them do anything either. `!command` runs a fake shell command. `Esc` interrupts mid-turn, `Ctrl+C` twice exits.

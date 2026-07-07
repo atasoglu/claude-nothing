@@ -1,6 +1,6 @@
 [project]
 name = "claude-nothing"
-version = "0.1.0"
+version = "0.1.1"
 description = "A fake Claude Code session that looks incredibly productive but does absolutely nothing."
 readme = "README.md"
 license = "MIT"
