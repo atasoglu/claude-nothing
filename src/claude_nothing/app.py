@@ -72,7 +72,13 @@ class ClaudeNothingApp(App):
         Binding("tab", "accept_suggestion", show=False, priority=True),
     ]
 
-    def __init__(self, task: str | None = None, loop_demo: bool = False, fast: bool = False, seed: int | None = None):
+    def __init__(
+        self,
+        task: str | None = None,
+        loop_demo: bool = False,
+        fast: bool = False,
+        seed: int | None = None,
+    ):
         super().__init__(ansi_color=True)
         if seed is not None:
             random.seed(seed)
@@ -163,7 +169,12 @@ class ClaudeNothingApp(App):
     def on_input_submitted(self, event: Input.Submitted) -> None:
         text = event.value.strip()
         menu = self.query_one("#menu", SlashMenu)
-        if menu.display and menu.selected_command and text.startswith("/") and " " not in text:
+        if (
+            menu.display
+            and menu.selected_command
+            and text.startswith("/")
+            and " " not in text
+        ):
             text = menu.selected_command
         self.hide_menu()
         self.query_one("#log", RichLog).scroll_end(animate=False)
@@ -201,7 +212,9 @@ class ClaudeNothingApp(App):
             task = random.choice(content.TASKS)
 
     def action_interrupt(self) -> None:
-        running = [w for w in self.workers if w.group == TURN_GROUP and not w.is_finished]
+        running = [
+            w for w in self.workers if w.group == TURN_GROUP and not w.is_finished
+        ]
         if running:
             self.workers.cancel_group(self, TURN_GROUP)
             self.clear_spinner()
@@ -233,7 +246,10 @@ class ClaudeNothingApp(App):
     def action_history_down(self) -> None:
         menu = self.query_one("#menu", SlashMenu)
         if menu.display:
-            if menu.highlighted is not None and menu.highlighted < menu.option_count - 1:
+            if (
+                menu.highlighted is not None
+                and menu.highlighted < menu.option_count - 1
+            ):
                 menu.highlighted += 1
             return
         if self.history and self.hist_pos < len(self.history) - 1:
@@ -261,7 +277,11 @@ class ClaudeNothingApp(App):
             return
         if name == "/clear":
             self.query_one("#log", RichLog).clear()
-            self.write(Text.from_markup(f"[{DIM}]Conversation cleared. It's like nothing ever happened. (It didn't.)[/]"))
+            self.write(
+                Text.from_markup(
+                    f"[{DIM}]Conversation cleared. It's like nothing ever happened. (It didn't.)[/]"
+                )
+            )
             self.write("")
         elif name == "/help":
             self.write(Text.from_markup("[bold]Available commands:[/]"))
@@ -270,42 +290,90 @@ class ClaudeNothingApp(App):
             self.write("")
         elif name == "/status":
             self.write(Text.from_markup("[bold]Claude Nothing Status[/]"))
-            self.write(Text.from_markup(f"  [{DIM}]Model:[/]        {content.MODEL_NAME}"))
-            self.write(Text.from_markup(f"  [{DIM}]Session:[/]      {performance.fmt_tokens(self.tokens)} tokens of pure nothing"))
-            self.write(Text.from_markup(f"  [{DIM}]Files changed:[/] 0 (streak: all time)"))
+            self.write(
+                Text.from_markup(f"  [{DIM}]Model:[/]        {content.MODEL_NAME}")
+            )
+            self.write(
+                Text.from_markup(
+                    f"  [{DIM}]Session:[/]      {performance.fmt_tokens(self.tokens)} tokens of pure nothing"
+                )
+            )
+            self.write(
+                Text.from_markup(f"  [{DIM}]Files changed:[/] 0 (streak: all time)")
+            )
             self.write("")
         elif name == "/cost":
             self.write(Text.from_markup(f"  [{DIM}]Total cost:[/]     $0.00"))
             self.write(Text.from_markup(f"  [{DIM}]Total value:[/]    also $0.00"))
-            self.write(Text.from_markup(f"  [{DIM}]ROI:[/]            undefined (division by zero)"))
+            self.write(
+                Text.from_markup(
+                    f"  [{DIM}]ROI:[/]            undefined (division by zero)"
+                )
+            )
             self.write("")
         elif name == "/doctor":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Everything is fine. Nothing is running, so nothing can be broken."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Everything is fine. Nothing is running, so nothing can be broken."
+                )
+            )
             self.write("")
         elif name == "/compact":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Compacted 0 tokens into 0 tokens. Savings: 100% of nothing."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Compacted 0 tokens into 0 tokens. Savings: 100% of nothing."
+                )
+            )
             self.write("")
         elif name == "/init":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Analyzed your codebase thoroughly. Decided to write nothing down."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Analyzed your codebase thoroughly. Decided to write nothing down."
+                )
+            )
             self.write("")
         elif name == "/model":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Current model: [bold]{content.MODEL_NAME}[/]. Changing it would change nothing."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Current model: [bold]{content.MODEL_NAME}[/]. Changing it would change nothing."
+                )
+            )
             self.write("")
         elif name == "/vim":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Vim mode enabled. hjkl now do nothing, modally."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Vim mode enabled. hjkl now do nothing, modally."
+                )
+            )
             self.write("")
         elif name == "/config":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] There are no settings. Nothing is already perfectly configured."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] There are no settings. Nothing is already perfectly configured."
+                )
+            )
             self.write("")
         elif name == "/rickroll":
-            self.write(Text.from_markup(f"[{GREEN}]⏺[/] Never gonna give you up, never gonna let you down."))
+            self.write(
+                Text.from_markup(
+                    f"[{GREEN}]⏺[/] Never gonna give you up, never gonna let you down."
+                )
+            )
             self.write("")
         else:
-            self.write(Text.from_markup(f"[{RED}]⏺[/] Unknown command: {name}. It wouldn't have done anything anyway."))
+            self.write(
+                Text.from_markup(
+                    f"[{RED}]⏺[/] Unknown command: {name}. It wouldn't have done anything anyway."
+                )
+            )
             self.write("")
 
     def run_shell(self, cmd: str) -> None:
         performance.show_user(self, f"! {cmd}")
         self.write(Text.from_markup(f"[{GREEN}]⏺[/] [bold]Bash[/]({cmd})"))
-        self.write(Text.from_markup(f"  [{DIM}]⎿  (no output — this shell only produces nothing)[/]"))
+        self.write(
+            Text.from_markup(
+                f"  [{DIM}]⎿  (no output — this shell only produces nothing)[/]"
+            )
+        )
         self.write("")

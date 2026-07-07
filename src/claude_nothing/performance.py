@@ -112,7 +112,9 @@ async def update_tool(app, path: str) -> None:
         if marker == "-":
             line_text = Text(f"     {ln:>4} - {code}", style=f"{RED} on {DIFF_DEL_BG}")
         elif marker == "+":
-            line_text = Text(f"     {ln:>4} + {code}", style=f"{GREEN} on {DIFF_ADD_BG}")
+            line_text = Text(
+                f"     {ln:>4} + {code}", style=f"{GREEN} on {DIFF_ADD_BG}"
+            )
         else:
             line_text = Text(f"     {ln:>4}   {code}", style=DIM)
         if marker in ("-", "+") and line_text.cell_len < width:
@@ -142,7 +144,9 @@ async def todo_update(app, steps: list, done: int) -> None:
 
 async def subagent_phase(app) -> None:
     """Delegate the nothing. Management experience."""
-    await say(app, "This is a big task — let me spin up a few agents to cover more ground.")
+    await say(
+        app, "This is a big task — let me spin up a few agents to cover more ground."
+    )
     tasks = random.sample(content.AGENT_TASKS, k=random.randint(2, 3))
     for t in tasks:
         app.write(Text.from_markup(f"[{GREEN}]⏺[/] [bold]Task[/]({t})"))
@@ -170,7 +174,12 @@ async def explore_phase(app) -> None:
     await say(app, random.choice(content.SAYINGS_OPENING))
     await tool_call(app, "Glob", "**/*.py", f"Found {random.randint(23, 187)} files")
     for f in random.sample(content.FILES, k=random.randint(2, 3)):
-        await tool_call(app, "Read", f, f"Read {random.randint(40, 480)} lines ({random.choice(content.READ_JOKES)})")
+        await tool_call(
+            app,
+            "Read",
+            f,
+            f"Read {random.randint(40, 480)} lines ({random.choice(content.READ_JOKES)})",
+        )
     await tool_call(
         app,
         "Search",
@@ -190,7 +199,9 @@ async def work_phase(app) -> None:
             await bash_call(app, *random.choice(content.BASH_JOKES))
         if random.random() < 0.4:
             f = random.choice(content.FILES)
-            await tool_call(app, "Write", f, f"Wrote {random.randint(18, 240)} lines to {f}")
+            await tool_call(
+                app, "Write", f, f"Wrote {random.randint(18, 240)} lines to {f}"
+            )
 
 
 async def test_phase(app) -> None:
@@ -199,7 +210,12 @@ async def test_phase(app) -> None:
     failed = random.randint(1, 3)
     fail_file = f"tests/{random.choice(['test_api', 'test_auth', 'test_core'])}.py"
     fail_test = random.choice(
-        ["test_edge_case", "test_timeout_retry", "test_invalid_token", "test_nothing_happens"]
+        [
+            "test_edge_case",
+            "test_timeout_retry",
+            "test_invalid_token",
+            "test_nothing_happens",
+        ]
     )
     await bash_call(
         app,
@@ -213,7 +229,10 @@ async def test_phase(app) -> None:
         ],
         error=True,
     )
-    await say(app, "Ah, I see the problem — the mock wasn't accounting for the new retry logic. Easy fix.")
+    await say(
+        app,
+        "Ah, I see the problem — the mock wasn't accounting for the new retry logic. Easy fix.",
+    )
     await update_tool(app, fail_file)
     await bash_call(
         app,

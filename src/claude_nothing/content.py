@@ -2,16 +2,54 @@
 
 # Genuine Claude Code thinking verbs. Yes, "Honking" is real.
 VERBS = [
-    "Accomplishing", "Actualizing", "Baking", "Brewing", "Cerebrating",
-    "Churning", "Clauding", "Coalescing", "Cogitating", "Computing",
-    "Conjuring", "Considering", "Cooking", "Crafting", "Crunching",
-    "Deliberating", "Finagling", "Forging", "Hatching", "Herding",
-    "Honking", "Hustling", "Ideating", "Inferring", "Manifesting",
-    "Marinating", "Moseying", "Mulling", "Musing", "Noodling",
-    "Percolating", "Pondering", "Puttering", "Reticulating", "Ruminating",
-    "Rickrolling", "Schlepping", "Shucking", "Simmering", "Smooshing",
-    "Stalling", "Stewing", "Synthesizing", "Thinking", "Transmuting",
-    "Vibing", "Working", "Yak-shaving",
+    "Accomplishing",
+    "Actualizing",
+    "Baking",
+    "Brewing",
+    "Cerebrating",
+    "Churning",
+    "Clauding",
+    "Coalescing",
+    "Cogitating",
+    "Computing",
+    "Conjuring",
+    "Considering",
+    "Cooking",
+    "Crafting",
+    "Crunching",
+    "Deliberating",
+    "Finagling",
+    "Forging",
+    "Hatching",
+    "Herding",
+    "Honking",
+    "Hustling",
+    "Ideating",
+    "Inferring",
+    "Manifesting",
+    "Marinating",
+    "Moseying",
+    "Mulling",
+    "Musing",
+    "Noodling",
+    "Percolating",
+    "Pondering",
+    "Puttering",
+    "Reticulating",
+    "Ruminating",
+    "Rickrolling",
+    "Schlepping",
+    "Shucking",
+    "Simmering",
+    "Smooshing",
+    "Stalling",
+    "Stewing",
+    "Synthesizing",
+    "Thinking",
+    "Transmuting",
+    "Vibing",
+    "Working",
+    "Yak-shaving",
 ]
 
 SPINNER_FRAMES = ["·", "✢", "✳", "✶", "✻", "✽", "✻", "✶", "✳", "✢"]
@@ -29,17 +67,40 @@ LOGO = [
 ]
 
 FILES = [
-    "src/main.py", "src/app.py", "src/core/engine.py", "src/utils/helpers.py",
-    "src/api/routes.py", "src/api/handlers.py", "src/models/user.py",
-    "src/services/auth.py", "src/config.py", "src/middleware/cache.py",
-    "tests/test_api.py", "tests/test_auth.py", "tests/test_core.py",
-    "lib/parser.py", "internal/scheduler.py", "pkg/telemetry/collector.py",
+    "src/main.py",
+    "src/app.py",
+    "src/core/engine.py",
+    "src/utils/helpers.py",
+    "src/api/routes.py",
+    "src/api/handlers.py",
+    "src/models/user.py",
+    "src/services/auth.py",
+    "src/config.py",
+    "src/middleware/cache.py",
+    "tests/test_api.py",
+    "tests/test_auth.py",
+    "tests/test_core.py",
+    "lib/parser.py",
+    "internal/scheduler.py",
+    "pkg/telemetry/collector.py",
 ]
 
 GREP_PATTERNS = [
-    "TODO", "FIXME", "def handle_", "class .*Manager", "raise ValueError",
-    "async def", "import legacy", "deprecated", "@retry", "connection_pool",
-    "never gonna", "XXX hack", "do not touch", "# lol", "here be dragons",
+    "TODO",
+    "FIXME",
+    "def handle_",
+    "class .*Manager",
+    "raise ValueError",
+    "async def",
+    "import legacy",
+    "deprecated",
+    "@retry",
+    "connection_pool",
+    "never gonna",
+    "XXX hack",
+    "do not touch",
+    "# lol",
+    "here be dragons",
 ]
 
 SAYINGS_OPENING = [
@@ -124,7 +185,7 @@ SLASH_COMMANDS = [
 ]
 
 WHATS_NEW = [
-    "Added a \"Dynamic nothing size\" setting for doing nothing 40% faster",
+    'Added a "Dynamic nothing size" setting for doing nothing 40% faster',
     "Fixed a bug where something almost happened",
     "Improved fake test results to pass even more convincingly",
     "Added surprise rickrolls to the thinking spinner (you're welcome)",
@@ -148,44 +209,77 @@ THOUGHTS = [
 
 # Joke shell commands and their outputs, sprinkled between real-looking work.
 BASH_JOKES = [
-    ("git status", [
-        "On branch main",
-        "nothing to commit, working tree clean (suspiciously clean)",
-    ]),
-    ("npm install", [
-        "added 1848 packages, and audited 1849 packages in 3s",
-        "found 0 vulnerabilities (they will find you)",
-    ]),
-    ("make build", [
-        "make: Nothing to be done for 'build'.",
-        "(finally, a tool that understands this project)",
-    ]),
-    ("docker compose up -d", [
-        "✔ Container app-nothing-1  Started            0.0s",
-        "(the container is empty, like everything here)",
-    ]),
-    ("git log --oneline -3", [
-        "a1b2c3d fix everything",
-        "d4e5f6a break everything",
-        "789abc1 initial commit (the last honest one)",
-    ]),
-    ("git blame src/config.py", [
-        "(it was you. it was always you.)",
-    ]),
-    ("curl -I https://example.com", [
-        "HTTP/1.1 200 OK (never gonna 404 you)",
-    ]),
-    ("open never-gonna-give-you-up.mp4", [
-        "playing... (you have been rickrolled)",
-    ]),
+    (
+        "git status",
+        [
+            "On branch main",
+            "nothing to commit, working tree clean (suspiciously clean)",
+        ],
+    ),
+    (
+        "npm install",
+        [
+            "added 1848 packages, and audited 1849 packages in 3s",
+            "found 0 vulnerabilities (they will find you)",
+        ],
+    ),
+    (
+        "make build",
+        [
+            "make: Nothing to be done for 'build'.",
+            "(finally, a tool that understands this project)",
+        ],
+    ),
+    (
+        "docker compose up -d",
+        [
+            "✔ Container app-nothing-1  Started            0.0s",
+            "(the container is empty, like everything here)",
+        ],
+    ),
+    (
+        "git log --oneline -3",
+        [
+            "a1b2c3d fix everything",
+            "d4e5f6a break everything",
+            "789abc1 initial commit (the last honest one)",
+        ],
+    ),
+    (
+        "git blame src/config.py",
+        [
+            "(it was you. it was always you.)",
+        ],
+    ),
+    (
+        "curl -I https://example.com",
+        [
+            "HTTP/1.1 200 OK (never gonna 404 you)",
+        ],
+    ),
+    (
+        "open never-gonna-give-you-up.mp4",
+        [
+            "playing... (you have been rickrolled)",
+        ],
+    ),
 ]
 
 WEB_SEARCHES = [
-    ("how to fix flaky tests", 'Found 10 results (9 of them say "just delete the test")'),
-    ("race condition best practices", "Did 1 search in 2s (the search itself had a race condition)"),
+    (
+        "how to fix flaky tests",
+        'Found 10 results (9 of them say "just delete the test")',
+    ),
+    (
+        "race condition best practices",
+        "Did 1 search in 2s (the search itself had a race condition)",
+    ),
     ("is it safe to deploy on friday", "Found 0 reassuring results"),
     ("what does this regex do", "Found 1 result (the author doesn't know either)"),
-    ("never gonna give you up lyrics", "Found 1 result (should not have been necessary)"),
+    (
+        "never gonna give you up lyrics",
+        "Found 1 result (should not have been necessary)",
+    ),
     ("how to look busy in a meeting", "Found 12 results, all of them this app"),
 ]
 
@@ -212,7 +306,9 @@ AGENT_TASKS = [
     "Never gonna refactor this alone",
 ]
 
-INTERRUPTED = "Interrupted · What should Claude do instead? (may I suggest: also nothing)"
+INTERRUPTED = (
+    "Interrupted · What should Claude do instead? (may I suggest: also nothing)"
+)
 
 # Fake diff hunks for the Update tool: (marker, code) pairs.
 DIFF_HUNKS = [

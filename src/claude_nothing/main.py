@@ -58,10 +58,16 @@ def main() -> None:
         prog="claude-nothing",
         description="A fake Claude Code session that looks incredibly productive but does absolutely nothing.",
     )
-    parser.add_argument("-t", "--task", help="run a scripted demo pretending to work on this task")
+    parser.add_argument(
+        "-t", "--task", help="run a scripted demo pretending to work on this task"
+    )
     parser.add_argument("--fast", action="store_true", help="pretend faster")
-    parser.add_argument("--loop", action="store_true", help="run autonomously forever, no input needed")
-    parser.add_argument("--seed", type=int, help="random seed, for reproducible nothing")
+    parser.add_argument(
+        "--loop", action="store_true", help="run autonomously forever, no input needed"
+    )
+    parser.add_argument(
+        "--seed", type=int, help="random seed, for reproducible nothing"
+    )
     args = parser.parse_args()
 
     if not sys.stdout.isatty():

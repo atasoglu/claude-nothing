@@ -37,7 +37,9 @@ def home_panel(width: int) -> Panel:
         # logo rows. Center manually so left/right padding stays exact.
         return line(text.center(left_w)[:left_w], style)
 
-    right_w = box_w - left_w - 7  # border + panel padding + divider column + cell padding
+    right_w = (
+        box_w - left_w - 7
+    )  # border + panel padding + divider column + cell padding
 
     left_lines = [
         centered(f"Welcome back {user.capitalize()}!", "bold"),
@@ -47,7 +49,10 @@ def home_panel(width: int) -> Panel:
         left_lines.append(centered(logo_line, CLAUDE))
     left_lines.append(centered(""))
     left_lines.append(
-        centered(f"{content.MODEL_DISPLAY} with medium effort · {user}@nothing.dev's Organization", DIM)
+        centered(
+            f"{content.MODEL_DISPLAY} with medium effort · {user}@nothing.dev's Organization",
+            DIM,
+        )
     )
     left_lines.append(centered(cwd, DIM))
 
@@ -60,7 +65,9 @@ def home_panel(width: int) -> Panel:
     ]
     for whats_new_line in content.WHATS_NEW:
         right_lines.append(line(whats_new_line))
-    right_lines.append(line("/release-notes for more (there are none)", f"italic {DIM}"))
+    right_lines.append(
+        line("/release-notes for more (there are none)", f"italic {DIM}")
+    )
 
     height = max(len(left_lines), len(right_lines))
     left_lines += [line("")] * (height - len(left_lines))
@@ -133,7 +140,9 @@ class StatusBar(Horizontal):
 
     def set_context(self, pct: int) -> None:
         right = self.query_one("#status-right", Static)
-        right.update(Text.from_markup(f"[{DIM}]◐ medium · /effort · {pct}% context left[/]  "))
+        right.update(
+            Text.from_markup(f"[{DIM}]◐ medium · /effort · {pct}% context left[/]  ")
+        )
 
 
 class SlashMenu(OptionList):
