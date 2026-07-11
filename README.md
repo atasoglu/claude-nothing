@@ -12,6 +12,8 @@ Perfect for:
 - Impressing people walking past your desk
 - Feeling productive without the burden of producing anything
 
+![usage demo](usage.gif)
+
 ## Usage
 
 Run it instantly, no install required:
